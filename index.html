@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>What Colour is it!?</title>
+ <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style type="text/css">
+/*custom font - Lato*/
+@import url("http://fonts.googleapis.com/css?family=Lato:100");
+/*basic reset*/
+* {margin: 0; padding: 0;}
+/*make the body occupy full height*/
+html, body {height: 100%; font-size: 16px;font-family: 'Lato'; color:#ffffff}
+
+#hex {
+	/*Vertical centering*/
+	position: relative; top: 50%; margin-top: -60px;
+	/*Horizontal centering*/
+	text-align: center;
+  height: 120px;
+}
+#hex h1 {
+  font-size: 1.6em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+#hex p {
+  font-size: 4em;
+  line-height: normal;
+}
+
+</style>
+
+</head>
+<body>
+  <div id="hex"></div>
+</body>
+  
+  <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+
+  <script>
+    //lets display the current time
+    var d, h, m, s, color;
+    function displayTime() {
+      d = new Date(); //new data object
+      h = d.getHours();
+      m = d.getMinutes();
+      s = d.getSeconds();
+	
+      //add zero to the left of the numbers if they are single digits
+      if(h <= 9) h = '0'+h;
+      if(m <= 9) m = '0'+m;
+      if(s <= 9) s = '0'+s;
+	
+      color = "#"+h+m+s;
+      //set background color
+      document.body.style.background = color;
+      //set time
+      document.getElementById("hex").innerHTML = "<h1> What Colour is it?</h1><p>"+color+"</p>";
+	
+      //retrigger the function every second
+      setTimeout(displayTime, 1000);
+    }
+
+    //call the function
+    displayTime();
+</script>  
+  
+</html>
